@@ -28,7 +28,7 @@ spec:
         targetRevision: HEAD
         path: '{{.path}}'
       destination:
-        server: '{{.url}}'
+        name: '{{.cluster}}'
         namespace: '{{.environment}}'
       syncPolicy:
         syncOptions:
