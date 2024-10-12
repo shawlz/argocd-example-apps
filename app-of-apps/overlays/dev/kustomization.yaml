@@ -17,7 +17,7 @@ patches:
     patch: |
       kind: ApplicationSet
       metadata:
-        name: DOES NOT MATTER
+        name: dev-guestbook
       spec:
         generators:
         - list:

@@ -15,9 +15,9 @@ spec:
   generators:
   - list:
       elements:
-      - cluster: in-cluster
-        environment: dev
-        path: kustomize-guestbook
+      - cluster: <cluster>
+        environment: <env>
+        path: <path>
   template:
     metadata:
       name: '{{.environment}}-guestbook'
