@@ -1,6 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-
+namePrefix: dev-
 resources:
 - "../../base"
 
@@ -17,7 +17,7 @@ patches:
     patch: |
       kind: ApplicationSet
       metadata:
-        name: dev-guestbook
+        name: DOES NOT MATTER
       spec:
         generators:
         - list:
