@@ -3,6 +3,12 @@ kind: ApplicationSet
 metadata:
   name: guestbook
   namespace: argocd
+  labels:
+    avantgarde.ng/clusters: all
+  annotations:
+    avantgarde.ng/environment-dev: deploy
+    avantgarde.ng/environment-staging: deploy
+    avantgarde.ng/environment-production: deploy
 spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
@@ -10,26 +16,20 @@ spec:
   - list:
       elements:
       - cluster: in-cluster
-        url: https://kubernetes.default.svc
-        env: dev
-      - cluster: in-cluster
-        url: https://kubernetes.default.svc
-        env: staging
-      - cluster: in-cluster
-        url: https://kubernetes.default.svc
-        env: production
+        environment: dev
+        path: kustomize-guestbook
   template:
     metadata:
-      name: '{{.env}}-guestbook'
+      name: '{{.environment}}-guestbook'
     spec:
       project: default
       source:
         repoURL: https://github.com/shawlz/argocd-example-apps.git
         targetRevision: HEAD
-        path: kustomize-guestbook
+        path: '{{.path}}'
       destination:
         server: '{{.url}}'
-        namespace: '{{.env}}'
+        namespace: '{{.environment}}'
       syncPolicy:
         syncOptions:
           - CreateNamespace=true

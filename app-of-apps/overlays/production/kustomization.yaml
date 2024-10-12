@@ -4,3 +4,27 @@ kind: Kustomization
 resources:
 - "../../base"
 
+patches:
+  - target:
+      annotationSelector: avantgarde.ng/environment-production != deploy
+    patch: |
+      $patch: delete
+      kind: ApplicationSet
+      metadata:
+        name: DOES NOT MATTER
+  - target:
+      labelSelector: avantgarde.ng/clusters == all
+    patch: |
+      kind: ApplicationSet
+      metadata:
+        name: DOES NOT MATTER
+      spec:
+        generators:
+        - list:
+            elements:
+            - cluster: in-cluster
+              environment: production
+              path: kustomize-guestbook
+        template:
+          spec:
+            project: default
