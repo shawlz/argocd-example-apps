@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: base-app
+  name: base-dev-app
   namespace: argocd
 spec:
   project: default
@@ -16,4 +16,4 @@ spec:
     automated:
       prune: true
       selfHeal: false
-      
+---

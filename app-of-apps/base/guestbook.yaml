@@ -11,16 +11,16 @@ spec:
       elements:
       - cluster: in-cluster
         url: https://kubernetes.default.svc
-        namespace: dev
+        env: dev
       - cluster: in-cluster
         url: https://kubernetes.default.svc
-        namespace: staging
+        env: staging
       - cluster: in-cluster
         url: https://kubernetes.default.svc
-        namespace: production
+        env: production
   template:
     metadata:
-      name: '{{.namespace}}-guestbook'
+      name: '{{.env}}-guestbook'
     spec:
       project: default
       source:
@@ -29,9 +29,17 @@ spec:
         path: kustomize-guestbook
       destination:
         server: '{{.url}}'
-        namespace: '{{.namespace}}'
+        namespace: '{{.env}}'
       syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
         automated:
           prune: true
           selfHeal: false
+        retry:
+          limit: 5 # number of failed sync attempt retries; unlimited number of attempts if less than 0
+          backoff:
+            duration: 30s # the amount to back off. Default unit is seconds, but could also be a duration (e.g. "2m", "1h")
+            factor: 2 # a factor to multiply the base duration after each failed retry
+            maxDuration: 3m # the maximum amount of time allowed for the backoff strategy
           
