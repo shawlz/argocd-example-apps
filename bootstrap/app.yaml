@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/shawlz/argocd-example-apps.git
     targetRevision: HEAD
-    path: app-of-apps/overlays
+    path: bootstrap/overlays
   destination:
     server: https://kubernetes.default.svc
     namespace: default

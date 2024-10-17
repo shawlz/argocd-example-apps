@@ -23,7 +23,7 @@ spec:
       source:
         repoURL: https://github.com/shawlz/argocd-example-apps.git
         targetRevision: HEAD
-        path: app-of-apps/overlays/{{.environment}}
+        path: bootstrap/overlays/{{.environment}}
       destination:
         name: '{{.cluster}}'
         namespace: default
