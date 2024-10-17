@@ -6,8 +6,12 @@ ARGOCD_EXAMPLES_ROOT=/Users/solaajayi/experiments/argocd/argocd-example-apps
 WATCH_SRC_PATH=${ARGOCD_EXAMPLES_ROOT}/${ARGOCD_EXAMPLE_APP}
 
 # ArgoCD Login
-ARGOCD_IP=10.244.0.109
+ARGOCD_IP=10.244.0.167
 ARGOCD_PORT=8080
+ARGOCD_USERNAME=admin
+ARGOCD_PASSWORD=
+argocd login ${ARGOCD_IP}:${ARGOCD_PORT} --insecure --username ${ARGOCD_USERNAME} --password ${ARGOCD_PASSWORD} 
+
 argocd login ${ARGOCD_IP}:${ARGOCD_PORT} --insecure
 
 # Create Application using YAML

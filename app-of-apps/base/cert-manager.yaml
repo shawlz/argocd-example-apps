@@ -3,12 +3,12 @@ kind: ApplicationSet
 metadata:
   name: cert-manager
   namespace: argocd
-  # labels:
-    # avantgarde.ng/clusters: all
+  labels:
+    avantgarde.ng/clusters: all
   annotations:
     avantgarde.ng/environment-dev: deploy
-    # avantgarde.ng/environment-staging: deploy
-    # avantgarde.ng/environment-production: deploy
+    avantgarde.ng/environment-staging: deploy
+    avantgarde.ng/environment-production: deploy
 spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
