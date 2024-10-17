@@ -24,7 +24,7 @@ patches:
             elements:
             - cluster: in-cluster
               environment: dev
-              path: clusters/ldk/dev
+              path: clusters/ldk/dev/cert-manager
         template:
           spec:
             project: default

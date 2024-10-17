@@ -11,10 +11,10 @@ spec:
       elements:
       - cluster: in-cluster
         environment: dev
-      - cluster: in-cluster
-        environment: staging
-      - cluster: in-cluster
-        environment: production
+      # - cluster: in-cluster
+      #   environment: staging
+      # - cluster: in-cluster
+      #   environment: production
   template:
     metadata:
       name: 'base-{{.environment}}-app'
