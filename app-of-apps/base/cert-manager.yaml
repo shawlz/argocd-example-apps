@@ -26,7 +26,7 @@ spec:
       source:
         repoURL: https://github.com/shawlz/argocd-example-apps.git
         targetRevision: HEAD
-        path: '{{.path}}'
+        path: '{{.path}}/cert-manager'
       destination:
         name: '{{.cluster}}'
         namespace: '{{.environment}}'
